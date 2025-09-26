@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       {
         ok: false,
         message: result.message ?? 'Too Many Requests',
-        retry_after_seconds: (result as any).retry_after_seconds ?? undefined,
+        retry_after_seconds: 'retry_after_seconds' in result ? result.retry_after_seconds : undefined,
       },
       { status: result.code }
     );
